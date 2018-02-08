@@ -14,37 +14,70 @@ ___
 3. Type in one of the following command mentioned below
 
 ## Usage
-`python3 google-images-download.py [Arguments...]`
+**Python3:** `python3 google-images-download.py [Arguments...]`  **OR**
+
+**Python2:** `python google-images-download.py [Arguments...]`
 
 ### Arguments 
 
 | Argument  | Short hand | Explanation |
 | --- | :---: | --- |
-|**keywords**| k | Denotes the words that you would want to search for and the directory file name. |
-|**limit** | l |Denotes number of images that you would want to download.  |
-|**color** | c |Denotes the color filter that you would want to apply to the images.|
-|**url** | u |Allows you to download one image given the URL|
+|**keywords**| k | Denotes the words that you want to search for and the directory file name. |
+|**limit** | l |Denotes number of images that you want to download.  |
+|**url** | u |Allows you search by image. It downloads images from the google images link provided|
+|**single_image** | x |Allows you to download one image if the complete URL of the image is provided|
+|**output_directory** | o |Allows you specify the main directory name. If not specified, it will default to 'downloads'|
+|**delay** | d |Time to wait between downloading two images|
+|**color** | c |Denotes the color filter that you would want to apply to the images. <br> `Possible values: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black, brown`|
+|**usage_rights** | r |Denotes the usage rights/licence under which the image is classified. <br> `Possible values: labled-for-reuse-with-modifications, labled-for-reuse, labled-for-noncommercial-reuse-with-modification, labled-for-nocommercial-reuse`|
+|**size** | s |Denotes the relative size of the image to be downloaded. <br> `Possible values: large, medium, icon`|
+|**type** | t |Denotes the type of image to be downloaded. <br> `Possible values: face,photo,clip-art,line-drawing,animated`|
+|**time** | w |Denotes the time the image was uploaded/indexed. <br> `Possible values: past-24-hours, past-7-days`|
 
-**Note:** Only the keywords field is mandatory.
+**Note:** If `single_image` or `url` parameter is not present, then keywords is a mandatory parameter. No other parameters are mandatory.
 
 ## Examples
-If you have python 2.x version installed
+* If you have python 2.x version installed
 
 `python google-images-download.py --keywords "Polar bears, baloons, Beaches" --limit 20`
 
-If you have python 3.x version installed
+* If you have python 3.x version installed
 
 `python3 google-images-download.py --keywords "Polar bears, baloons, Beaches" --limit 20`
 
-To use the short hand command
+* To use the short hand command
 
 `python google-images-download.py -k "Polar bears, baloons, Beaches" -l 20`
 
-To use color filters for the images
+* To use color filters for the images
 
 `python google-images-download.py -k "playground" -l 20 -c red`
 
-===> The images would be downloaded in their own directories in the same folder as the python file.
+* To use non-English keywords for image search
+
+`python google-images-download.py -k "北极熊" -l 5`
+
+* To download images from the google images link
+
+`python google-images-download.py -k "sample" -u <google images page URL>`
+
+* To save images in specific main directory (instead of in 'downloads')
+
+`python google-images-download.py -k "boat" -o "boat_new"`
+
+* To download one single image with the image URL
+
+`python google-images-download.py --keywords "baloons" --single_image <URL of the images>`
+
+* To download images with size and type constrains
+
+`python google-images-download.py --keywords "baloons" --size medium --type animated`
+
+* To download images with specific usage rights
+
+`python google-images-download.py --keywords "universe" --usage_rights labled-for-reuse`
+
+===> The images would be downloaded in their own sub-directories inside the main directory (either the one you provided or in 'downloads') in the same folder as the python file that you run.
 
 ___
 
